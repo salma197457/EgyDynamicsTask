@@ -34,5 +34,6 @@ export class ClientService {
   EditClient(EditClient:Client){
     return this.http.put<any>(this.url,EditClient)
   }
+  
  
 }

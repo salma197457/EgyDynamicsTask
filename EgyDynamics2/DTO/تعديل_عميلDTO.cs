@@ -7,7 +7,7 @@
         public string محلالاقامة { get; set; }
         public string توصيف { get; set; }
         public string الوظيفة { get; set; }
-        public string ادخالبواسطة { get; set; }
+        public int ادخالبواسطة { get; set; }
         public int? اخرتعديل { get; set; }
         public DateTime? تاريخالادخال { get; set; }
         public DateTime? اخرتعديلفي { get; set; }

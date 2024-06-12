@@ -5,6 +5,7 @@ import { ClientService } from '../../Services/client.service';
 import { ClientAdd } from '../../Models/client-add';
 import { Client } from '../../Models/client';
 import { FormsModule } from '@angular/forms';
+import { AccountLogInService } from '../../Services/account-log-in.service';
 
 @Component({
   selector: 'app-client-edit',
@@ -16,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 export class ClientEditComponent {
   Eclient:Client= new Client(0,"","","","","","",null,null,"","","","","","","","","");;
 
-  constructor(private router:Router , private clientService:ClientService){
+  constructor(private router:Router , private clientService:ClientService,private acc:AccountLogInService){
     const nav = this.router.getCurrentNavigation();
     if(nav?.extras?.state){
       this.Eclient=nav.extras.state['client']
@@ -24,13 +25,18 @@ export class ClientEditComponent {
   }
   SaveClient(){
     this.Eclient['اخرتعديلفي']=new Date();
-    this.Eclient['اخرتعديل']="salma"
-    this.clientService.EditClient(this.Eclient).subscribe({
-      next:(d)=>this.BackToTable()
-    })
+    this.Eclient['اخرتعديل']=+this.acc.r.id;
+    this.clientService.GetClientById(this.Eclient['كودالعميل']).subscribe({
+      next:(d)=>{
+        this.Eclient['ادخالبواسطة']=d['ادخالبواسطة'];
+        this.clientService.EditClient(this.Eclient).subscribe({
+          next:(d)=> this.router.navigateByUrl("/clients")
+        })
+      }
+      })
     // console.log(this.Eclient)
     }
-
+    
   BackToTable(){
     this.router.navigateByUrl('/clients')
   }

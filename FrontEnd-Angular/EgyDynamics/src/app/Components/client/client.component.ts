@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import * as XLSX from 'xlsx';
 import { Router, RouterLink } from '@angular/router';
 import { ClientAdd } from '../../Models/client-add';
+import { AccountLogInService } from '../../Services/account-log-in.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { ClientAdd } from '../../Models/client-add';
   styleUrl: './client.component.css'
 })
 export class ClientComponent implements OnInit{
-  constructor(public clientservice:ClientService, public router:Router){}
+  constructor(public clientservice:ClientService, public router:Router,private acc:AccountLogInService){}
   Clients:Client[]=[];
   pageNumber: number = 1;
   pageSize: number = 4;

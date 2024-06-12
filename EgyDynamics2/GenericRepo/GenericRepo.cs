@@ -64,7 +64,8 @@ namespace EgyDynamics2.GenericRepo
         {
             return dbcontext.Set<TEntity>().Find(keyValues);
         }
-        public TEntity SelectByIDInclude(int id, params Expression<Func<TEntity, object>>[] includes)
+
+        public TEntity SelectByIDInclude(int id, string IdName, params Expression<Func<TEntity, object>>[] includes)
         {
             IQueryable<TEntity> query = dbcontext.Set<TEntity>();
 
@@ -72,8 +73,9 @@ namespace EgyDynamics2.GenericRepo
             {
                 query = query.Include(include);
             }
-            return dbcontext.Set<TEntity>().Find(id);
+            return query.FirstOrDefault(e => EF.Property<int>(e, IdName) == id);
         }
+        
         public void Add(TEntity entity)
         {
             dbcontext.Set<TEntity>().Add(entity);

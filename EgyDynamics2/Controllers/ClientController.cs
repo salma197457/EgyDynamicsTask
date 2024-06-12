@@ -53,6 +53,20 @@ namespace EgyDynamics2.Controllers
             }
         }
 
+        [HttpGet("{id:int}")]
+        public IActionResult GetClientById(int id)
+        {
+            try
+            {
+                العميل client = UOF.CustomerRepository.SelectByIDInclude(id, "كودالعميل",c=>c.ادخالبواسطةNavigation,c=>c.اخرتعديلNavigation);
+                تعديل_عميلDTO ClientPost = Mapper.Map<تعديل_عميلDTO>(client);
+                return Ok(ClientPost);
+            }
+            catch
+            {
+                return StatusCode(500, "An unexpected error occurred while retrieving customers.");
+            }
+        }
 
        
         [HttpPost]
@@ -97,13 +111,14 @@ namespace EgyDynamics2.Controllers
         }
 
         [HttpPut]
-        public IActionResult EditClient(العميلDTO edited)
+        public IActionResult EditClient(تعديل_عميلDTO edited)
         {
             if (edited == null)
             {
                 return BadRequest("Please enter the required data");
             }
-            العميل client = Mapper.Map<العميل>(edited);
+            العميل client = UOF.CustomerRepository.SelectByIDInclude(edited.كودالعميل, "كودالعميل",s=>s.ادخالبواسطةNavigation,s=>s.اخرتعديلNavigation);
+            Mapper.Map(edited, client);
             UOF.CustomerRepository.update(client);
             UOF.SaveChanges();
 
