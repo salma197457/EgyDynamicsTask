@@ -1,0 +1,64 @@
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
+        <form class="grid grid-cols-3 gap-4">
+            <div>
+                <label class="block text-right mb-2">اسم العميل</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="اسمالعميل" [(ngModel)]="Eclient['اسمالعميل']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">عنوان العميل</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="محلالاقامة" [(ngModel)]="Eclient['محلالاقامة']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">الموبايل</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="موبايل"[(ngModel)]="Eclient['موبايل']">
+            </div>
+            <div>
+                <label class="block text-right mb-2"> تليفون1</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="تليفون1" [(ngModel)]="Eclient['تليفون1']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">تليفون2</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="تليفون2" [(ngModel)]="Eclient['تليفون2']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">واتس</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="واتس" [(ngModel)]="Eclient['واتس']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">ايميل</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="الايميل" [(ngModel)]="Eclient['الايميل']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">جنسية</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="جنسية" [(ngModel)]="Eclient['جنسية']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">توصيف </label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="توصيف" [(ngModel)]="Eclient['توصيف']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">الوظيفة </label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="الوظيفة" [(ngModel)]="Eclient['الوظيفة']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">رجل المبيعات</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="رجلالمبيعات" [(ngModel)]="Eclient['رجلالمبيعات']">
+            </div>
+            <div>
+                <label class="block text-right mb-2">مصدرالعميل </label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="مصدرالعميل"[(ngModel)]="Eclient['مصدرالعميل']">
+            </div>
+            <div>
+                <label class="block text-right mb-2"> تصنيف العميل</label>
+                <input type="text" class="w-full p-2 border border-gray-300 rounded" name="تصنيفالعميل"[(ngModel)]="Eclient['تصنيفالعميل']">
+            </div>
+            <div class="col-span-3 flex justify-between mt-4">
+                <div >
+                    <button type="submit" class="m-3 px-4 py-2 bg-blue-500 text-white rounded" (click)="SaveClient()">حفظ</button>
+                    <button type="reset" class="px-4 py-2 ml-2 bg-gray-500 text-white rounded"(click)="BackToTable()">إلغاء</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body> 
